@@ -8,6 +8,8 @@ const WebsitePreview = ({ entry, widgetFor }) => (
     tags={entry.getIn(['data', 'tags'])}
     title={entry.getIn(['data', 'title'])}
     image={entry.getIn(['data', 'image'])}
+    link={entry.getIn(['data', 'link'])}
+    author={entry.getIn(['data', 'author'])}
   />
 )
 

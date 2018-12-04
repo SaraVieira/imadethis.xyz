@@ -18,7 +18,8 @@ collections:
           widget: 'hidden',
           default: 'website',
         }
+      - { label: 'Link', name: 'link', widget: 'string' }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Image', name: 'image', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - { label: 'Tags', name: 'tags', widget: 'list' }
+      - { label: 'Author', name: 'author', widget: 'list' }
