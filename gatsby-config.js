@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter'
+    title: 'I made this 🎉',
+    description: 'A home for all your useless side projects'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
-      // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/static/img`,
