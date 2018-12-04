@@ -1,7 +1,6 @@
 import React from 'react'
-import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
@@ -10,37 +9,32 @@ export const WebsiteTemplate = ({
   contentComponent,
   description,
   image,
-  tags,
   title,
-  helmet
+  helmet,
+  link,
+  author
 }) => {
   const PostContent = contentComponent || Content
+  const img = image.childImageSharp.fluid.src
+
   console.log(image)
   return (
-    <section className="section">
+    <section>
       {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
-        </div>
+      <div className="fl w-50 pa2">
+        <h1>
+          <a href={link} target="_blank">
+            {title}
+          </a>
+        </h1>
+        <img src={img} alt={`Image for ${title}`} />
+        {author &&
+          author.map((a, i) => (
+            <li key={i}>
+              <a href={author}>{author}</a>
+            </li>
+          ))}
+        <PostContent content={content} />
       </div>
     </section>
   )
@@ -54,17 +48,14 @@ const Website = ({ data }) => {
       <WebsiteTemplate
         content={post.html}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
+        link={post.frontmatter.link}
+        image={post.frontmatter.image}
+        author={post.frontmatter.author}
         helmet={
           <Helmet titleTemplate="%s | Blog">
             <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
           </Helmet>
         }
-        tags={post.frontmatter.tags}
         title={post.frontmatter.title}
       />
     </Layout>
@@ -79,11 +70,18 @@ export const pageQuery = graphql`
       id
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        image {
+          childImageSharp {
+            ... on ImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+        link
+        author
         title
-        description
-        tags
-        image
       }
     }
   }

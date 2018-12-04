@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: 'I made this 🎉',
-    description: 'A home for all your useless side projects'
+    description: 'Useless is not worthless'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
+    `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
