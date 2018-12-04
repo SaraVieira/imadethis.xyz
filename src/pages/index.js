@@ -8,20 +8,16 @@ const IndexPage = ({ data }) => {
     <Layout>
       <section className="mw9 center ph3-ns">
         <div className="cf ph2-ns">
-          {posts.map(({ node: post }) => (
+          {posts.map(({ node: { excerpt, id, fields, frontmatter } }) => (
             <>
-              <div className="fl w-100 w-50-ns pa2" key={post.id}>
-                <h2>
-                  <Link className="has-text-primary" to={post.fields.slug}>
-                    {post.frontmatter.title}
-                  </Link>
-                </h2>
-                <p>
-                  {post.excerpt}
-                  <Link className="button is-small" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
-                </p>
+              <div className="fl w-100 w-33-ns pa2" key={id}>
+                <h2>{frontmatter.title}</h2>
+                <img
+                  src={frontmatter.image.childImageSharp.fluid.src}
+                  alt={frontmatter.title}
+                />
+                <p className="pb2">{excerpt}</p>
+                <Link to={fields.slug}>Go to Website</Link>
               </div>
             </>
           ))}
@@ -45,12 +41,17 @@ export const pageQuery = graphql`
           }
           frontmatter {
             image {
-              absolutePath
+              childImageSharp {
+                ... on ImageSharp {
+                  fluid {
+                    src
+                  }
+                }
+              }
             }
             link
             author
             title
-            templateKey
           }
         }
       }
