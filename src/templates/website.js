@@ -19,21 +19,19 @@ export const WebsiteTemplate = ({
   return (
     <section>
       {helmet || ''}
-      <div className="fl w-50 pa2">
-        <h1>
-          <a href={link} target="_blank">
-            {title}
-          </a>
-        </h1>
-        <img src={img} alt={`Image for ${title}`} />
-        {author &&
-          author.map((a, i) => (
-            <li key={i}>
-              <a href={author}>{author}</a>
-            </li>
-          ))}
-        <PostContent content={content} />
-      </div>
+      <h1>
+        <a href={link} target="_blank">
+          {title}
+        </a>
+      </h1>
+      <img src={img} alt={`Image for ${title}`} />
+      {author &&
+        author.map((a, i) => (
+          <li key={i}>
+            <a href={author}>{author}</a>
+          </li>
+        ))}
+      <PostContent content={content} />
     </section>
   )
 }

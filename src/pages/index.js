@@ -1,27 +1,43 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import styled from 'styled-components'
+
+const Grid = styled.main`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+  align-items: self-end;
+  margin-top: 60px;
+
+  @media screen and (max-width: 990px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (max-width: 740px) {
+    grid-template-columns: 1fr;
+  }
+`
 
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
   return (
     <Layout>
       <section className="mw9 center ph3-ns">
-        <div className="cf ph2-ns">
+        <Grid>
           {posts.map(({ node: { excerpt, id, fields, frontmatter } }) => (
-            <>
-              <div className="fl w-100 w-33-ns pa2" key={id}>
-                <h2>{frontmatter.title}</h2>
-                <img
-                  src={frontmatter.image.childImageSharp.fluid.src}
-                  alt={frontmatter.title}
-                />
-                <p className="pb2">{excerpt}</p>
-                <Link to={fields.slug}>Go to Website</Link>
-              </div>
-            </>
+            <article key={id}>
+              <h2>{frontmatter.title}</h2>
+              <img
+                src={frontmatter.image.childImageSharp.fluid.src}
+                alt={frontmatter.title}
+              />
+              {/* <p className="pb2">{excerpt}</p> */}
+              {/* <Link to={fields.slug}>Go to Website</Link> */}
+            </article>
           ))}
-        </div>
+        </Grid>
       </section>
     </Layout>
   )
