@@ -16,8 +16,6 @@ export const WebsiteTemplate = ({
 }) => {
   const PostContent = contentComponent || Content
   const img = image.childImageSharp.fluid.src
-
-  console.log(image)
   return (
     <section>
       {helmet || ''}
