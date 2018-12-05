@@ -36,7 +36,7 @@ const TemplateWrapper = ({ children }) => (
     `}
     render={data => (
       <ThemeProvider theme={theme}>
-        <div className="pa2">
+        <div className="">
           <Helmet>
             <html lang="en" />
             <title>{data.site.siteMetadata.title}</title>
