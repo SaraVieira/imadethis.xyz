@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
@@ -11,10 +11,6 @@ const Header = styled.div`
 `
 
 const H2 = styled.h2`
-  color: ${props => props.theme.white};
-`
-
-const H1 = styled.h2`
   color: ${props => props.theme.white};
 `
 
@@ -46,24 +42,6 @@ const Flex = styled.div`
 `
 
 const Navbar = () => {
-  useEffect(() => {
-    const $navbarBurgers = Array.prototype.slice.call(
-      document.querySelectorAll('.navbar-burger'),
-      0
-    )
-    if ($navbarBurgers.length > 0) {
-      $navbarBurgers.forEach(el => {
-        el.addEventListener('click', () => {
-          const target = el.dataset.target
-          const $target = document.getElementById(target)
-
-          el.classList.toggle('is-active')
-          $target.classList.toggle('is-active')
-        })
-      })
-    }
-  }, [])
-
   return (
     <Header>
       <nav role="navigation" aria-label="main-navigation">
@@ -82,7 +60,6 @@ const Navbar = () => {
         </UL>
         <Flex>
           <img src={party} alt="logo" />
-          <H1>I made this</H1>
         </Flex>
       </nav>
       <section>
