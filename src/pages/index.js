@@ -89,7 +89,6 @@ const IndexPage = ({ data }) => {
               />
               <div className="details">
                 <Title>{frontmatter.title}</Title>
-                {console.log(frontmatter.author)}
                 {frontmatter.author && (
                   <Author>
                     Made by:
