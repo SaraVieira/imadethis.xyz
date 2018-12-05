@@ -93,14 +93,23 @@ const IndexPage = ({ data }) => {
                   <Author>
                     Made by:
                     {frontmatter.author.map((a, i) => (
-                      <a key={a} target="_blank" href={a.toLowerCase().trim()}>
+                      <a
+                        key={a}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={a.toLowerCase().trim()}
+                      >
                         {getUrl(a)}
                         {i === frontmatter.author.length - 1 ? '' : ', '}
                       </a>
                     ))}
                   </Author>
                 )}
-                <Button target="_blank" href={frontmatter.link}>
+                <Button
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={frontmatter.link}
+                >
                   Go to Website
                 </Button>
               </div>

@@ -20,7 +20,7 @@ export const WebsiteTemplate = ({
     <section>
       {helmet || ''}
       <h1>
-        <a href={link} target="_blank">
+        <a href={link} rel="noopener noreferrer" target="_blank">
           {title}
         </a>
       </h1>

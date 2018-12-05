@@ -52,6 +52,7 @@ const Navbar = () => {
           <li>
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href="https://github.com/SaraVieira/imadethis.xyz"
             >
               Github
