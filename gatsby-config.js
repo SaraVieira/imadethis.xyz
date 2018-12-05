@@ -1,11 +1,26 @@
 module.exports = {
   siteMetadata: {
-    title: 'I made this 🎉',
-    description: 'Useless is not worthless'
+    title: 'I made this',
+    description: 'A home for everything you made in that weird weekend'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: './src/img/favicon.png',
+
+        appName: 'I made this',
+        lang: 'en-US',
+        background: '#fff',
+        theme_color: '#fff',
+        display: 'standalone',
+        orientation: 'any',
+        start_url: '/?homescreen=1',
+        version: '1.0'
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

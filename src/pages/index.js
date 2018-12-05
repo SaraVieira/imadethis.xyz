@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
+import getUrl from '../utils/getUrl'
 
 const Grid = styled.main`
   display: grid;
@@ -69,6 +70,10 @@ const Title = styled.h2`
   max-height: 50px;
 `
 
+const Author = styled.span`
+  margin-bottom: 20px;
+`
+
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
 
@@ -84,6 +89,18 @@ const IndexPage = ({ data }) => {
               />
               <div className="details">
                 <Title>{frontmatter.title}</Title>
+                {console.log(frontmatter.author)}
+                {frontmatter.author && (
+                  <Author>
+                    Made by:
+                    {frontmatter.author.map((a, i) => (
+                      <a key={a} target="_blank" href={a.toLowerCase().trim()}>
+                        {getUrl(a)}
+                        {i === frontmatter.author.length - 1 ? '' : ', '}
+                      </a>
+                    ))}
+                  </Author>
+                )}
                 <Button target="_blank" href={frontmatter.link}>
                   Go to Website
                 </Button>
