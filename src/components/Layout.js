@@ -44,6 +44,40 @@ const TemplateWrapper = ({ children }) => (
               name="description"
               content={data.site.siteMetadata.description}
             />
+
+            <meta charset="utf-8" />
+
+            <meta
+              name="description"
+              content="A home for everything you made in that weird weekend"
+            />
+            <meta
+              name="image"
+              content="https://rawcdn.githack.com/SaraVieira/imadethis.xyz/ab34aee653815e719f15056cbe6e46020e72f92e/src/img/favicon.png"
+            />
+
+            <meta itemProp="name" content="I made this" />
+            <meta
+              itemProp="description"
+              content="A home for everything you made in that weird weekend"
+            />
+            <meta
+              itemProp="image"
+              content="https://rawcdn.githack.com/SaraVieira/imadethis.xyz/ab34aee653815e719f15056cbe6e46020e72f92e/src/img/favicon.png"
+            />
+
+            <meta name="og:title" content="I made this" />
+            <meta
+              name="og:description"
+              content="A home for everything you made in that weird weekend"
+            />
+            <meta
+              name="og:image"
+              content="https://rawcdn.githack.com/SaraVieira/imadethis.xyz/ab34aee653815e719f15056cbe6e46020e72f92e/src/img/favicon.png"
+            />
+            <meta name="og:url" content="https://imadethis.xyz/" />
+            <meta name="og:site_name" content="I made this" />
+            <meta name="og:type" content="website" />
           </Helmet>
           <Navbar />
           <div>{children}</div>
